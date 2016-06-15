@@ -1,40 +1,44 @@
 #include <stdio.h>
 #define _tam 6
 
-int getPivo(int *v, int begin, int end);
+void quicksort(int *v, int begin, int end){
 
-void quicksort(int *vector, int begin, int end){
-	int pivo;
-	if(end > begin){
-		int pivo = getPivo(vector, begin, end);
-		quicksort(vector, begin, pivo);
-		quicksort(vector, pivo+1, end);
-	}
-}
+	/* Caso Base: Condição de parada da recursão
+	 * */
 
-int getPivo(int *v, int begin, int end){
-	int pivo = (begin + end)/2, //Pivô: Valor central do vetor
-		i = begin, //Extremidade esquerda do vetor
-		j = end, //Extremidade direira do vetor
-		aux; //Variável auxiliar
+	if(begin >= end)
+		return;
+
+	int pivo = (begin + end)/2,	//Pivô: Valor central do vetor
+		i,						//Extremidade esquerda do vetor
+		j,						//Extremidade direita do vetor
+		aux;					//Variável auxiliar
+
+	/* Parte responsável por organizar todos os elementos menores que o pivô
+	 * ao seu lado esquerdo e manter os elementos maiores à direita.
+	 * */
 	
-	while(i <= j){
+	for(i=begin, j=end; i <= j; i++, j--){
 		while(v[i] < v[pivo])
 			i++;
 		while(v[j] > v[pivo])
 			j--;
-		
+
 		if(i <= j){
 			aux = v[j];
 			v[j] = v[i];
 			v[i] = aux;
-			i++;
-			j--;
 		}
 	}
 
-	return pivo;	
-}
+	/* Parte recursiva responsável por ordenar as duas segmentações do vetor
+	 * (de 'begin' até 'pivo' e de 'pivo+1' até 'end')
+	 * */
+	
+	quicksort(v, begin, pivo);
+	quicksort(v, pivo+1, end);
+
+}	
 
 int main(int argc, char *argv[]){
 	int i, dados[_tam] = {5, 0, 2, 4, 1, 3};
