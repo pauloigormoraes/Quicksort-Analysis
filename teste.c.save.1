@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main () {
+  int d[10];
+  int i = 0;
+  int r;
+
+  printf("pseudo numeros da funcao rand em c: [0 %i]\n", RAND_MAX);
+  srand((unsigned)time(NULL));
+
+  for(r = 0; r <= 10; r++) {
+  d[i] = 1 + (rand() % 10);
+  }
+
+  while(d[i] == d[i-1]) {d[i] = 1 + (rand() % 10);}
+    d[
+    for(r = 0; r <= 10; r++) {
+          printf("sao eles %i - %i\n", r, d[i]);
+        }
+     }
+  return 0;
+}

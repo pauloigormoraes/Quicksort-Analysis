@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define DP 10
+
+int f_existe (int *d, int r) {
+  int i;
+  for(i = 0; i < DP; i++) {
+   if (d[i] == r) return 1;
+  }
+  return 0;
+}
+
+int f_outrovalor(int *d) {
+  int r;
+  srand((unsigned int)time((time_t *)NULL));
+  do {
+      r = 1 + (rand() % 10);
+  }
+  while (f_existe(d, r));
+  return r;
+}
+
+
+int main () {
+  int d[DP];
+  int r[DP];
+  int m, i;
+
+  srand(time(NULL));
+  //d[i] = 1 + (rand() % DP);
+  d[i] = f_outrovalor(d);
+  printf ("%i", r[i]);
+  if (r[i] == 0) printf ("%i", r[i]);
+
+  /*for (i = 0; i < DP; i++) {
+   d[i] =  1 + (rand() % DP);
+     for (m = 0; m < i; m++) {
+        if (d[m] == d[i]) {
+            d[i] = 1 + (rand() % DP);
+            m = 0;
+        }
+     }
+  }
+  for(i = 0; i < DP; i++) {
+     printf("sao eles %i - %i\n", i, d[i]);
+  }*/
+
+  return 0;
+}
