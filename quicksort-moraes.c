@@ -12,8 +12,11 @@ int f_having (int *d, int r);
 //funcao principal
 int main(void) {
 <<<<<<< HEAD
+<<<<<<< HEAD
   int array[11] = {1, 2, 6, 3, 4, 6, 1, 2, 5, 7, 9};         //declaracao vetor para ordenacao
 =======
+=======
+>>>>>>> 7855db40831d326c96284b209a0d085dc59027d7
   int d[DP];
   int array[10] = {2, 390, 34, 9, 0, 40, 6, 8, 45, 1};         //declaracao vetor para ordenacao
 >>>>>>> 7855db40831d326c96284b209a0d085dc59027d7
@@ -39,8 +42,13 @@ int main(void) {
 	
 	puts("\n\nVetor ordenado");      
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for(i=0; i<11; i++)                                        //imprimindo vetor ordenado
 		printf("%i ", array[i]);
+=======
+	for(i=0; i<10; i++)                                        //imprimindo vetor ordenado
+            printf("%i ", array[i]);
+>>>>>>> 7855db40831d326c96284b209a0d085dc59027d7
 =======
 	for(i=0; i<10; i++)                                        //imprimindo vetor ordenado
             printf("%i ", array[i]);
