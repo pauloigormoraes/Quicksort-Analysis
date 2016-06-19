@@ -1,0 +1,4 @@
+#Ignonar ./idea 'Pasta de controle do JetBrains'
+.idea/**/*
+CMakeLists.txt
+*.swp
