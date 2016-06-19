@@ -1,18 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define DP 10
 
 //Declarando funcoes
 void f_quicksort(int *r, int start, int end);
 int f_fracture(int *r, int start, int end);
-int f_valuetwo (int *d);
-int f_having (int *d, int r);
+int f_valuetwo (int *d, int m);
+int f_having (int *d, int r, int m);
 
 //funcao principal
 int main(void) {
- // int array[DP];
-  //int array[DP] = {34, 9, 10000, 90007, 765, 40, 6, 8, 45, 1};
   int i, d;   
                                               
   printf("\nQuicksort em C\n\n");
@@ -24,7 +21,7 @@ int main(void) {
   
   puts("Vetor desordenado > ");
   for(i = 0; i < d; i++) {
-  array[i] = f_valuetwo(array);
+  array[i] = f_valuetwo(array, d);
   printf("%i ", array[i]);
   }
   puts("");
@@ -70,19 +67,19 @@ int f_fracture(int *array, int start, int end) {
    return right;
 }
 
-int f_valuetwo(int *d) { 
+int f_valuetwo(int *d, int m) { 
   int r;
   srand((unsigned int)time(NULL));
   do {
-      r = 1 + (rand() % 10);
+      r = 1 + (rand() % m);
   }
-  while (f_having(d, r)); 
+  while (f_having(d, r, m)); 
   return r; 
 }
 
-int f_having (int *d, int r) {
+int f_having (int *d, int r, int m) {
   int i;
-  for(i = 0; i < DP; i++) {                     
+  for(i = 0; i < m; i++) {                     
    if (d[i] == r) return 1;
   }
   return 0;
