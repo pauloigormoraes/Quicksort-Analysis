@@ -10,7 +10,7 @@ void quicksort(int *v, int begin, int end){
 	if(begin >= end)
 		return;
 
-	int pivo = (begin+end)/2,		//Pivô: Valor central do vetor
+	int pivo = end,		//Pivô: Valor central do vetor
 		i,						//Extremidade esquerda do vetor
 		j,						//Extremidade direita do vetor
 		aux;					//Variável auxiliar

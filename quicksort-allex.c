@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define _tam 6
+#define _tam 11
 
 void quicksort(int *v, int begin, int end){
 
@@ -9,7 +9,7 @@ void quicksort(int *v, int begin, int end){
 	if(begin >= end)
 		return;
 
-	int pivo = (begin + end)/2,	//Pivô: Valor central do vetor
+	int pivo = end,	//Pivô: Valor central do vetor
 		i,						//Extremidade esquerda do vetor
 		j,						//Extremidade direita do vetor
 		aux;					//Variável auxiliar
@@ -41,7 +41,7 @@ void quicksort(int *v, int begin, int end){
 }	
 
 int main(int argc, char *argv[]){
-	int i, dados[_tam] = {5, 0, 2, 4, 1, 3};
+	int i, dados[_tam] = {5, 100, 0, 1, 4};
 
 	quicksort(dados, 0, _tam-1);
 

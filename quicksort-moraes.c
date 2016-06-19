@@ -4,18 +4,18 @@ void f_quicksort(int *r, int start, int end);
 int f_fracture(int *r, int start, int end);
 //funcao principal
 int main(void) {
-  int array[10] = {2, 390, 34, 9, 0, 40, 6, 8, 45, 1};         //declaracao vetor para ordenacao
+  int array[11] = {1, 2, 6, 3, 4, 6, 1, 2, 5, 7, 9};         //declaracao vetor para ordenacao
   int i;                                                 
   printf("\nQuicksort em C\n\n");
   printf("Vetor desordenado\n");
   
-	for(i=0; i<10; i++)                                        //imprimindo vetor desordenado
+	for(i=0; i<11; i++)                                        //imprimindo vetor desordenado
 		printf("%i ", array[i]);                               
 	
-	f_quicksort(array, 0, 9);                                  //passando vetor para funcao quebra do vetor em duas partes
+	f_quicksort(array, 0, 10);                                  //passando vetor para funcao quebra do vetor em duas partes
 	
 	puts("\n\nVetor ordenado");      
-	for(i=0; i<10; i++)                                        //imprimindo vetor ordenado
+	for(i=0; i<11; i++)                                        //imprimindo vetor ordenado
 		printf("%i ", array[i]);
 
 	puts("");
