@@ -51,8 +51,13 @@ int *setLength(int len){
     return (int *) malloc(sizeof(int) * len);
 }
 
+/*-- Procedimento responsável por ordenar valores de um vetor
+ *   informado pelo usuário.
+ * */
 void sort_manual(int unsigned vector_length){
     int i, *vet = setLength(vector_length);
+    clock_t begin, end;
+    double total;
 
     printf("\n [<] Entre com valores para o vetor: \n\n");
     for(i=0; i<vector_length; i++){
@@ -64,11 +69,72 @@ void sort_manual(int unsigned vector_length){
     for(i=0; i<vector_length; i++)
         printf("%d ", vet[i]);
 
-    quicksort(vet, 0, vector_length-1);
+    begin = clock(); //Armazena o tempo de início de processamento da função quicksort
+    quicksort(vet, 0, vector_length-1); //Chamada da função QuickSort
+    end = clock(); //Obtém o tempo de fim da função quicksort
+
+    total = (double) (end - begin)/CLOCKS_PER_SEC; //Calcula a diferença de tempos e converte para segundos
 
     printf("\n [>] Após a aplicação do 'quicksort', seu vetor é: ");
     for(i=0; i<vector_length; i++)
         printf("%d ", vet[i]);
+
+    printf("\n [!] Ordenação realizada em %f segundos.", total);
+    printf("\n\n [!] Pressione a tecla 'Enter' para continuar...");
+    while(getchar()!='\n');
+    getchar();
+    free(vet);
+}
+
+void sort_automatic(int unsigned vector_length){
+    int i, max, *vet = setLength(vector_length);
+    short unsigned option, aux;
+    clock_t begin, end;
+    double total;
+
+    printf("\n [>] Informe o valor máximo presente no vetor: \n [<]: ");
+    scanf("%d", &max);
+
+    printf("\n [>] Como você deseja pré ordenar os valores?\n\n");
+    puts("\t1: Totalmente pseudoaleatórios");
+    puts("\t2: Em ordem crescente");
+    puts("\t3: Em ordem decrescente");
+    printf("\n [<]: ");
+    scanf("%d", &aux);
+
+    // Atribuição de valores pseudoaleatórios ao vetor
+    srand((unsigned int) time(NULL));
+    for(i=0; i<vector_length; i++)
+        vet[i] = 0 + (rand() % max); // de 0 até 'max' (um valor informado pelo usuário)
+
+    if(aux == 2){
+        quicksort(vet, 0, vector_length-1);
+        printf("\n [!] Assumindo Opção 2: Valores pseudoaleatórios em ordem crescente.");
+    }else if(aux == 3){
+        quicksort(vet, 0, vector_length-1);
+        int j, *auxVet = setLength(vector_length);
+        auxVet = vet;
+        for(i=vector_length-1, j=0; i>=0; i--, j++)
+            vet[j] = auxVet[i];
+
+        printf("\n [!] Assumindo Opção 3: Valores pseudoaleatórios em ordem decrescente.");
+    }else
+        printf("\n [!] Assumindo Opção 1: Valores totalmente pseudoaleatórios desordenados.");
+
+    begin = clock(); //Armazena o tempo de início de processamento da função quicksort
+    quicksort(vet, 0, vector_length-1); //Chamada da função QuickSort
+    end = clock(); //Obtém o tempo de fim da função quicksort
+
+    total = (double) (end - begin)/CLOCKS_PER_SEC; //Calcula a diferença de tempos e converte para segundos
+    printf("\n [!] O tempo de ordenação de %d valores pseudoaleatórios foi de %f segundos.\n [>] Deseja listar os valores? (1: Sim | 0: Não)\n [<]: ", vector_length, total);
+    scanf("%d", &option);
+    puts(" ");
+
+    if(option == 1){
+        printf("[>] Valores pseudoaleatórios após a aplicação do 'quicksort': ");
+        for(i=0; i<vector_length; i++)
+            printf("%d ", vet[i]);
+    }
 
     printf("\n\n [!] Pressione a tecla 'Enter' para continuar...");
     while(getchar()!='\n');

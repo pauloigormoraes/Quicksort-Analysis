@@ -4,37 +4,36 @@
 #include "functions.h"
 
 int main(int argc, char *argv[]){
-    short unsigned opcao;
+    short unsigned option;
     int unsigned aux;
 
     do{
         system("clear");
         setlocale(LC_ALL, "portuguese");
         printf("\n [*] -- Escolha uma opção -- [*]\n\n");
-        puts("  1: Ordenação Manual");
-        puts("  2: Ordenação Atomática (testes)");
-        puts("  0: Sair");
+        puts("\t1: Ordenação Manual");
+        puts("\t2: Ordenação Atomática (testes)");
+        puts("\t0: Sair");
         printf("\n [<]: ");
-        scanf("%d", &opcao);
+        scanf("%d", &option);
         system("clear");
 
-        printf("\n [>] Informe um tamanho para o vetor: \n [<]: ");
-        scanf("%d", &aux);
+        if(option != 0) {
+            printf("\n [>] Informe um tamanho para o vetor: \n [<]: ");
+            scanf("%d", &aux);
+        }
 
-        switch(opcao){
+        switch(option){
             case 1:
                 sort_manual(aux);
                 break;
             case 2:
-                //sort_automatic(aux);
-                break;
-            case 3:
+                sort_automatic(aux);
                 break;
             default:
                 exit(1);
         }
-    }while(opcao != 0);
+    }while(option != 0);
 
-    getchar();
     return 0;
 }
