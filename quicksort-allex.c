@@ -1,47 +1,43 @@
 #include <stdio.h>
 #define _tam 12
 
+static int divide(int *v, int begin, int end){
+    int i = begin + 1,      //Recebe a segunda posição do vetor
+        j = end,        //Recebe a última posição do vetor
+        pivo = begin,   //Pivo/Base inicial
+        aux;    //Variável auxiliar
+
+    while(i <= j){
+        if(v[pivo] >= v[i])
+            i++;
+        else if(v[pivo] < v[j])
+            j--;
+        else{
+            aux = v[i];
+            v[i] = v[j];
+            v[j] = aux;
+            i++;
+            j--;
+        }
+    }
+
+    aux = v[pivo];
+    v[pivo] = v[j];
+    v[j] = aux;
+
+    return j;
+}
+
 void quicksort(int *v, int begin, int end){
-
-	/* Caso Base: Condição de parada da recursão
-	 * */
-
-	if(begin >= end)
-		return;
-
-	int pivo = end,	//Pivô: Valor central do vetor
-		i,						//Extremidade esquerda do vetor
-		j,						//Extremidade direita do vetor
-		aux;					//Variável auxiliar
-
-	/* Parte responsável por organizar todos os elementos menores que o pivô
-	 * ao seu lado esquerdo e manter os elementos maiores à direita.
-	 * */
-	
-	for(i=begin, j=end; i <= j; i++, j--){
-		while(v[i] < v[pivo])
-			i++;
-		while(v[j] > v[pivo])
-			j--;
-
-		if(i <= j){
-			aux = v[j];
-			v[j] = v[i];
-			v[i] = aux;
-		}
-	}
-
-	/* Parte recursiva responsável por ordenar as duas segmentações do vetor
-	 * (de 'begin' até 'pivo' e de 'pivo+1' até 'end')
-	 * */
-	
-	quicksort(v, begin, pivo-1);
-	quicksort(v, pivo+1, end);
-
+    if(begin < end){
+        int pivo = divide(v, begin, end);
+        quicksort(v, begin, pivo-1);
+        quicksort(v, pivo+1, end);
+    }
 }	
 
 int main(int argc, char *argv[]){
-	int i, dados[_tam] = {5, 100, 0, 1, 4, 1, 100000, 0, 2, 3, 0, 55012000000};
+	int i, dados[_tam] = {0, 100, 0, 1, 6, 1, 100000, 0, 2, 3, 0, 15012000};
 
 	quicksort(dados, 0, _tam-1);
 
