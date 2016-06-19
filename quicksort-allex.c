@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define _tam 11
+#define _tam 12
 
 void quicksort(int *v, int begin, int end){
 
@@ -35,13 +35,13 @@ void quicksort(int *v, int begin, int end){
 	 * (de 'begin' até 'pivo' e de 'pivo+1' até 'end')
 	 * */
 	
-	quicksort(v, begin, pivo);
+	quicksort(v, begin, pivo-1);
 	quicksort(v, pivo+1, end);
 
 }	
 
 int main(int argc, char *argv[]){
-	int i, dados[_tam] = {5, 100, 0, 1, 4};
+	int i, dados[_tam] = {5, 100, 0, 1, 4, 1, 100000, 0, 2, 3, 0, 55012000000};
 
 	quicksort(dados, 0, _tam-1);
 

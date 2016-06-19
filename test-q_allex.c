@@ -36,7 +36,7 @@ void quicksort(int *v, int begin, int end){
 	 * (de 'begin' até 'pivo' e de 'pivo+1' até 'end')
 	 * */
 	
-	quicksort(v, begin, pivo);
+	quicksort(v, begin, pivo-1);
 	quicksort(v, pivo+1, end);
 
 }

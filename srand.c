@@ -8,7 +8,7 @@ int f_having (int *d, int r);
 
 int main () {
   int d[DP];                                    //crio meu vetor de tamanho DP
-  int i = 0;
+  int i 0= 0;
 
   for(i = 0; i < DP; i++) {                     //leio valores um por um
   d[i] = f_valuetwo(d);                         //recebo os valores do vetor
