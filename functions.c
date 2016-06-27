@@ -88,7 +88,7 @@ void sort_manual(int unsigned vector_length){
 
 void sort_automatic(int unsigned vector_length){
     int i, max, *vet = setLength(vector_length);
-    short int unsigned option, aux;
+    unsigned short int option, aux;
     clock_t begin, end;
     double total;
 
@@ -100,7 +100,7 @@ void sort_automatic(int unsigned vector_length){
     puts("\t2: Em ordem crescente");
     puts("\t3: Em ordem decrescente");
     printf("\n [<]: ");
-    scanf("%d", &aux);
+    scanf("%hu", &aux);
 
     // Atribuição de valores pseudoaleatórios ao vetor
     srand((unsigned int) time(NULL));
@@ -127,7 +127,7 @@ void sort_automatic(int unsigned vector_length){
 
     total = (double) (end - begin)/CLOCKS_PER_SEC; //Calcula a diferença de tempos e converte para segundos
     printf("\n [!] O tempo de ordenação de %d valores pseudoaleatórios foi de %f segundos.\n [>] Deseja listar os valores? (1: Sim | 0: Não)\n [<]: ", vector_length, total);
-    scanf("%d", &option);
+    scanf("%hu", &option);
     puts(" ");
 
     if(option == 1){

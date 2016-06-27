@@ -4,8 +4,7 @@
 #include "functions.h"
 
 int main(int argc, char *argv[]){
-    short unsigned option;
-    int unsigned aux;
+    unsigned short int option, aux;
 
     do{
         system("clear");
@@ -15,12 +14,12 @@ int main(int argc, char *argv[]){
         puts("\t2: Ordenação Atomática (testes)");
         puts("\t0: Sair");
         printf("\n [<]: ");
-        scanf("%d", &option);
+        scanf("%hu", &option);
         system("clear");
 
         if(option != 0) {
             printf("\n [>] Informe um tamanho para o vetor: \n [<]: ");
-            scanf("%d", &aux);
+            scanf("%hu", &aux);
         }
 
         switch(option){
