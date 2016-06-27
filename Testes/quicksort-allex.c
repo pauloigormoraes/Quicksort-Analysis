@@ -28,6 +28,7 @@ static int divide(int *v, int begin, int end){
     return j;
 }
 
+
 void quicksort(int *v, int begin, int end){
     if(begin < end){
         int pivo = divide(v, begin, end);

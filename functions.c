@@ -88,7 +88,7 @@ void sort_manual(int unsigned vector_length){
 
 void sort_automatic(int unsigned vector_length){
     int i, max, *vet = setLength(vector_length);
-    short unsigned option, aux;
+    short int unsigned option, aux;
     clock_t begin, end;
     double total;
 
